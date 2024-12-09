@@ -14,10 +14,11 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f1f1f1;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #f8f9fa, #e2e8f0);
             color: #333;
             line-height: 1.6;
+            padding: 20px 0;
         }
 
         header {
@@ -25,13 +26,14 @@
             color: white;
             text-align: center;
             padding: 40px 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-bottom: 40px;
         }
 
         header h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 10px;
-            font-weight: 700;
+            letter-spacing: 2px;
         }
 
         header p {
@@ -44,25 +46,27 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            margin: 30px 0;
+            gap: 15px;
+            margin-bottom: 30px;
         }
 
         .btn {
             background-color: #ff6347;
             color: white;
             padding: 15px 30px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
             border: none;
             cursor: pointer;
-            margin: 10px;
-            border-radius: 25px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .btn:hover {
             background-color: #ff4500;
             transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
 
         /* Comparison Section */
@@ -71,7 +75,7 @@
             justify-content: center;
             gap: 30px;
             flex-wrap: wrap;
-            margin-bottom: 30px;
+            margin-top: 30px;
         }
 
         .iphone-model {
@@ -79,44 +83,40 @@
             background-color: white;
             padding: 20px;
             border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             width: 280px;
             text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .iphone-model:hover {
-            transform: translateY(-5px);
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
         .iphone-model h2 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            font-weight: 600;
+            font-size: 2rem;
+            margin-bottom: 15px;
             color: #333;
         }
 
         .iphone-model img {
             width: 100%;
             height: auto;
-            border-radius: 10px;
+            border-radius: 15px;
             margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .iphone-model img:hover {
+            transform: scale(1.05);
         }
 
         .iphone-model ul {
             list-style-type: none;
             margin-top: 20px;
-            text-align: left;
+            padding-left: 0;
+            font-size: 1.1rem;
         }
 
         .iphone-model li {
-            font-size: 1rem;
             margin-bottom: 10px;
-            color: #666;
-        }
-
-        .iphone-model li strong {
-            color: #333;
+            color: #555;
         }
 
         /* Footer */
@@ -125,9 +125,8 @@
             color: white;
             text-align: center;
             padding: 15px 0;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
+            margin-top: 50px;
+            border-radius: 15px;
         }
 
         footer p {
@@ -146,38 +145,13 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .model-selection {
+                flex-direction: column;
+            }
+
             .comparison {
                 flex-direction: column;
                 align-items: center;
-            }
-
-            .btn {
-                padding: 12px 25px;
-                font-size: 1rem;
-            }
-
-            .iphone-model {
-                width: 90%;
-                margin-bottom: 20px;
-            }
-        }
-
-        /* A subtle gradient background effect */
-        body {
-            background: linear-gradient(to right, #ff6347, #ff7f50, #ff6347);
-            background-size: 200% 200%;
-            animation: gradient 5s ease infinite;
-        }
-
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
             }
         }
     </style>
@@ -215,11 +189,11 @@
                 <h2>iPhone 13</h2>
                 <img src="https://via.placeholder.com/280x450.png?text=iPhone+13" alt="iPhone 13">
                 <ul>
-                    <li><strong>Display:</strong> 6.1-inch</li>
-                    <li><strong>Chip:</strong> A15 Bionic</li>
-                    <li><strong>Camera:</strong> Dual 12 MP</li>
-                    <li><strong>Battery Life:</strong> 19 hours</li>
-                    <li><strong>Storage Options:</strong> 128GB, 256GB, 512GB</li>
+                    <li>Display: 6.1-inch</li>
+                    <li>Chip: A15 Bionic</li>
+                    <li>Camera: Dual 12 MP</li>
+                    <li>Battery Life: 19 hours</li>
+                    <li>Storage Options: 128GB, 256GB, 512GB</li>
                 </ul>
             </div>
 
@@ -228,11 +202,11 @@
                 <h2>iPhone 13 Plus</h2>
                 <img src="https://via.placeholder.com/280x450.png?text=iPhone+13+Plus" alt="iPhone 13 Plus">
                 <ul>
-                    <li><strong>Display:</strong> 6.7-inch</li>
-                    <li><strong>Chip:</strong> A15 Bionic</li>
-                    <li><strong>Camera:</strong> Dual 12 MP</li>
-                    <li><strong>Battery Life:</strong> 22 hours</li>
-                    <li><strong>Storage Options:</strong> 128GB, 256GB, 512GB</li>
+                    <li>Display: 6.7-inch</li>
+                    <li>Chip: A15 Bionic</li>
+                    <li>Camera: Dual 12 MP</li>
+                    <li>Battery Life: 22 hours</li>
+                    <li>Storage Options: 128GB, 256GB, 512GB</li>
                 </ul>
             </div>
 
@@ -241,15 +215,67 @@
                 <h2>iPhone 13 Pro</h2>
                 <img src="https://via.placeholder.com/280x450.png?text=iPhone+13+Pro" alt="iPhone 13 Pro">
                 <ul>
-                    <li><strong>Display:</strong> 6.1-inch Super Retina XDR</li>
-                    <li><strong>Chip:</strong> A15 Bionic</li>
-                    <li><strong>Camera:</strong> Triple 12 MP</li>
-                    <li><strong>Battery Life:</strong> 22 hours</li>
-                    <li><strong>Storage Options:</strong> 128GB, 256GB, 512GB, 1TB</li>
+                    <li>Display: 6.1-inch Super Retina XDR</li>
+                    <li>Chip: A15 Bionic</li>
+                    <li>Camera: Triple 12 MP</li>
+                    <li>Battery Life: 22 hours</li>
+                    <li>Storage Options: 128GB, 256GB, 512GB, 1TB</li>
                 </ul>
             </div>
 
             <!-- iPhone 13 Pro Max -->
             <div id="iphone13promax" class="iphone-model">
                 <h2>iPhone 13 Pro Max</h2>
-                <img src="https://via.placeholder.com/280x450.png?text=iPhone+13+Pro+Max" alt="i
+                <img src="https://via.placeholder.com/280x450.png?text=iPhone+13+Pro+Max" alt="iPhone 13 Pro Max">
+                <ul>
+                    <li>Display: 6.7-inch Super Retina XDR</li>
+                    <li>Chip: A15 Bionic</li>
+                    <li>Camera: Triple 12 MP</li>
+                    <li>Battery Life: 28 hours</li>
+                    <li>Storage Options: 128GB, 256GB, 512GB, 1TB</li>
+                </ul>
+            </div>
+
+            <!-- More models can be added similarly -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 iPhone Comparison</p>
+        <a href="https://www.apple.com" target="_blank">Visit Apple Official Site</a>
+    </footer>
+
+    <script>
+        // Function to hide all models
+        function hideAllModels() {
+            const models = document.querySelectorAll('.iphone-model');
+            models.forEach(model => {
+                model.style.display = 'none';
+            });
+        }
+
+        // Event listeners for buttons
+        document.getElementById('iphone13-btn').addEventListener('click', function() {
+            hideAllModels();
+            document.getElementById('iphone13').style.display = 'block';
+        });
+
+        document.getElementById('iphone13plus-btn').addEventListener('click', function() {
+            hideAllModels();
+            document.getElementById('iphone13plus').style.display = 'block';
+        });
+
+        document.getElementById('iphone13pro-btn').addEventListener('click', function() {
+            hideAllModels();
+            document.getElementById('iphone13pro').style.display = 'block';
+        });
+
+        document.getElementById('iphone13promax-btn').addEventListener('click', function() {
+            hideAllModels();
+            document.getElementById('iphone13promax').style.display = 'block';
+        });
+
+        // You can add more event listeners for other models similarly...
+    </script>
+</body>
+</html>
