@@ -5,22 +5,150 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>iPhone Comparison</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #ff6347;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* Model Selection Section */
+        .model-selection {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .btn {
+            background-color: #ff6347;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #ff4500;
+        }
+
+        /* Comparison Section */
+        .comparison {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .iphone-model {
+            display: none;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 280px;
+            text-align: center;
+        }
+
+        .iphone-model h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .iphone-model img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .iphone-model ul {
+            list-style-type: none;
+            margin-top: 20px;
+        }
+
+        .iphone-model li {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #ff6347;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .comparison {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>iPhone Comparison</h1>
-        <p>Choose your iPhone model and compare specifications.</p>
+        <div class="header-container">
+            <h1>Compare iPhones</h1>
+            <p>Choose your iPhone models and compare specifications!</p>
+        </div>
     </header>
 
     <main>
-        <div class="model-selection">
+        <section class="model-selection">
             <button class="btn" id="iphone13-btn">iPhone 13</button>
             <button class="btn" id="iphone14-btn">iPhone 14</button>
             <button class="btn" id="iphone15-btn">iPhone 15</button>
-        </div>
+        </section>
 
-        <div class="comparison">
+        <section class="comparison">
             <div id="iphone13" class="iphone-model">
                 <h2>iPhone 13</h2>
                 <img src="iphone13.jpg" alt="iPhone 13">
@@ -28,7 +156,7 @@
                     <li>Display: 6.1-inch</li>
                     <li>Chip: A15 Bionic</li>
                     <li>Camera: Dual 12 MP</li>
-                    <li>Battery: 19 hours</li>
+                    <li>Battery Life: 19 hours</li>
                     <li>Storage Options: 128GB, 256GB, 512GB</li>
                 </ul>
             </div>
@@ -40,7 +168,7 @@
                     <li>Display: 6.1-inch</li>
                     <li>Chip: A15 Bionic</li>
                     <li>Camera: Dual 12 MP</li>
-                    <li>Battery: 20 hours</li>
+                    <li>Battery Life: 20 hours</li>
                     <li>Storage Options: 128GB, 256GB, 512GB</li>
                 </ul>
             </div>
@@ -52,11 +180,11 @@
                     <li>Display: 6.1-inch</li>
                     <li>Chip: A16 Bionic</li>
                     <li>Camera: Dual 48 MP</li>
-                    <li>Battery: 22 hours</li>
+                    <li>Battery Life: 22 hours</li>
                     <li>Storage Options: 128GB, 256GB, 512GB, 1TB</li>
                 </ul>
             </div>
-        </div>
+        </section>
     </main>
 
     <footer>
@@ -64,6 +192,34 @@
         <a href="https://www.apple.com" target="_blank">Visit Apple</a>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Event listeners for buttons
+        document.getElementById('iphone13-btn').addEventListener('click', function() {
+            showModel('iphone13');
+        });
+
+        document.getElementById('iphone14-btn').addEventListener('click', function() {
+            showModel('iphone14');
+        });
+
+        document.getElementById('iphone15-btn').addEventListener('click', function() {
+            showModel('iphone15');
+        });
+
+        // Function to show the selected iPhone model
+        function showModel(model) {
+            // Hide all models
+            const models = ['iphone13', 'iphone14', 'iphone15'];
+            models.forEach(function(item) {
+                document.getElementById(item).style.display = 'none';
+            });
+
+            // Show the selected model
+            document.getElementById(model).style.display = 'block';
+        }
+
+        // Show iPhone 13 by default when the page loads
+        showModel('iphone13');
+    </script>
 </body>
 </html>
