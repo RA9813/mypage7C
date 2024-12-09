@@ -4,207 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>iPhone Comparison Tool</title>
+    <title>iPhone Comparison</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>iPhone Comparison Tool</h1>
-        <p>Compare the specs of different iPhone models</p>
+        <h1>iPhone Comparison</h1>
+        <p>Choose your iPhone model and compare specifications.</p>
     </header>
 
     <main>
-        <section class="iphone-selector">
-            <label for="iphone-select">Choose iPhone models to compare:</label>
-            <select id="iphone-select" multiple>
-                <option value="iphone13">iPhone 13</option>
-                <option value="iphone14">iPhone 14</option>
-                <option value="iphone15">iPhone 15</option>
-                <option value="iphone12">iPhone 12</option>
-                <option value="iphone11">iPhone 11</option>
-            </select>
-            <button onclick="compareIphones()">Compare</button>
-        </section>
+        <div class="model-selection">
+            <button class="btn" id="iphone13-btn">iPhone 13</button>
+            <button class="btn" id="iphone14-btn">iPhone 14</button>
+            <button class="btn" id="iphone15-btn">iPhone 15</button>
+        </div>
 
-        <section id="comparison-table" class="comparison-table">
-            <!-- Comparison table will be dynamically inserted here -->
-        </section>
+        <div class="comparison">
+            <div id="iphone13" class="iphone-model">
+                <h2>iPhone 13</h2>
+                <img src="iphone13.jpg" alt="iPhone 13">
+                <ul>
+                    <li>Display: 6.1-inch</li>
+                    <li>Chip: A15 Bionic</li>
+                    <li>Camera: Dual 12 MP</li>
+                    <li>Battery: 19 hours</li>
+                    <li>Storage Options: 128GB, 256GB, 512GB</li>
+                </ul>
+            </div>
+
+            <div id="iphone14" class="iphone-model">
+                <h2>iPhone 14</h2>
+                <img src="iphone14.jpg" alt="iPhone 14">
+                <ul>
+                    <li>Display: 6.1-inch</li>
+                    <li>Chip: A15 Bionic</li>
+                    <li>Camera: Dual 12 MP</li>
+                    <li>Battery: 20 hours</li>
+                    <li>Storage Options: 128GB, 256GB, 512GB</li>
+                </ul>
+            </div>
+
+            <div id="iphone15" class="iphone-model">
+                <h2>iPhone 15</h2>
+                <img src="iphone15.jpg" alt="iPhone 15">
+                <ul>
+                    <li>Display: 6.1-inch</li>
+                    <li>Chip: A16 Bionic</li>
+                    <li>Camera: Dual 48 MP</li>
+                    <li>Battery: 22 hours</li>
+                    <li>Storage Options: 128GB, 256GB, 512GB, 1TB</li>
+                </ul>
+            </div>
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2024 iPhone Comparison Tool</p>
+        <p>&copy; 2024 iPhone Comparison</p>
+        <a href="https://www.apple.com" target="_blank">Visit Apple</a>
     </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
-}
-
-header {
-    background-color: #0066cc;
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
-
-h1 {
-    font-size: 2.5em;
-}
-
-main {
-    padding: 20px;
-}
-
-.iphone-selector {
-    margin-bottom: 30px;
-}
-
-select {
-    width: 200px;
-    height: 150px;
-    margin: 10px 0;
-    padding: 10px;
-}
-
-button {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 1em;
-}
-
-button:hover {
-    background-color: #218838;
-}
-
-.comparison-table {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.table {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 48%;
-    padding: 20px;
-}
-
-.table h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.table table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.table th, .table td {
-    text-align: left;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-}
-
-.table th {
-    background-color: #f0f0f0;
-    font-weight: bold;
-}
-
-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #222;
-    color: white;
-}
-// Example data for iPhone models
-const iphoneData = {
-    iphone11: {
-        name: "iPhone 11",
-        display: "6.1-inch Liquid Retina HD",
-        chip: "A13 Bionic chip",
-        camera: "12MP Ultra Wide and Wide cameras",
-        battery: "Up to 17 hours of video playback",
-        storage: "64GB, 128GB, 256GB"
-    },
-    iphone12: {
-        name: "iPhone 12",
-        display: "6.1-inch Super Retina XDR display",
-        chip: "A14 Bionic chip",
-        camera: "12MP Ultra Wide and Wide cameras with Night mode",
-        battery: "Up to 17 hours of video playback",
-        storage: "64GB, 128GB, 256GB"
-    },
-    iphone13: {
-        name: "iPhone 13",
-        display: "6.1-inch Super Retina XDR display",
-        chip: "A15 Bionic chip",
-        camera: "Dual 12MP cameras with Night mode and Deep Fusion",
-        battery: "Up to 19 hours of video playback",
-        storage: "128GB, 256GB, 512GB"
-    },
-    iphone14: {
-        name: "iPhone 14",
-        display: "6.1-inch Super Retina XDR display",
-        chip: "A15 Bionic chip",
-        camera: "Dual 12MP cameras with Photonic Engine",
-        battery: "Up to 20 hours of video playback",
-        storage: "128GB, 256GB, 512GB"
-    },
-    iphone15: {
-        name: "iPhone 15",
-        display: "6.1-inch Super Retina XDR display",
-        chip: "A16 Bionic chip",
-        camera: "48MP Main camera, Ultra Wide, and Telephoto",
-        battery: "Up to 23 hours of video playback",
-        storage: "128GB, 256GB, 512GB, 1TB"
-    }
-};
-
-// Function to compare selected iPhones
-function compareIphones() {
-    const selectedModels = Array.from(document.getElementById('iphone-select').selectedOptions)
-        .map(option => option.value);
-
-    if (selectedModels.length < 2) {
-        alert("Please select at least two iPhones to compare.");
-        return;
-    }
-
-    const comparisonTable = document.getElementById('comparison-table');
-    comparisonTable.innerHTML = '';  // Clear previous table
-
-    selectedModels.forEach(model => {
-        const iphone = iphoneData[model];
-        const table = document.createElement('div');
-        table.classList.add('table');
-
-        table.innerHTML = `
-            <h2>${iphone.name}</h2>
-            <table>
-                <tr><th>Display</th><td>${iphone.display}</td></tr>
-                <tr><th>Chip</th><td>${iphone.chip}</td></tr>
-                <tr><th>Camera</th><td>${iphone.camera}</td></tr>
-                <tr><th>Battery</th><td>${iphone.battery}</td></tr>
-                <tr><th>Storage Options</th><td>${iphone.storage}</td></tr>
-            </table>
-        `;
-
-        comparisonTable.appendChild(table);
-    });
-}
