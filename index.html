@@ -5,44 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iPhone Model Comparison</title>
     <style>
-        /* General styling */
+        /* General Reset and Global Styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(45deg, #00bfff, #87cefa); /* Sky blue gradient background */
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            background: linear-gradient(135deg, #6a82fb, #fc5c7d); /* Stunning gradient background */
             color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-attachment: fixed;
         }
 
+        /* Container for the main content */
         .container {
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 40px;
-            background-color: #fff;
-            border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+            max-width: 950px;
+            width: 100%;
+            padding: 30px;
+            text-align: center;
+            transform: scale(1);
+            transition: transform 0.3s ease-in-out;
         }
 
         .container:hover {
-            transform: scale(1.03);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            transform: scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
         }
 
+        /* Title Styling */
         h1 {
-            text-align: center;
-            font-size: 3em;
-            margin-bottom: 40px;
-            color: #1e90ff; /* Sky blue for the heading */
+            font-size: 3.5em;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
             text-transform: uppercase;
-            letter-spacing: 2px;
         }
 
+        /* Dropdown styling */
         .dropdown {
+            margin: 30px 0;
             display: flex;
             justify-content: space-between;
-            margin-bottom: 30px;
             gap: 20px;
         }
 
@@ -53,67 +63,67 @@
         }
 
         select {
-            padding: 12px;
+            padding: 15px 20px;
             font-size: 1.1em;
-            border-radius: 20px;
-            border: 2px solid #00bfff; /* Sky blue border */
-            outline: none;
-            background-color: #e0f7fa;
-            width: 45%;
+            border-radius: 25px;
+            border: none;
+            background: #f0f8ff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            cursor: pointer;
+            width: 48%;
         }
 
-        select:hover,
-        select:focus {
-            border-color: #1e90ff;
-            background-color: #b0e0e6;
+        select:hover {
+            background: #e0f7fa;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
         }
 
+        /* Table Styling */
         .comparison-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 30px;
+            font-size: 1.1em;
         }
 
         .comparison-table th,
         .comparison-table td {
             padding: 20px;
-            text-align: center;
-            border: 2px solid #00bfff; /* Sky blue border */
-            font-size: 1.1em;
-            font-weight: 500;
             border-radius: 15px;
+            text-align: center;
         }
 
         .comparison-table th {
-            background-color: #1e90ff; /* Sky blue header */
+            background: linear-gradient(135deg, #00bfff, #1e90ff);
             color: #fff;
             font-weight: bold;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .comparison-table td {
-            background-color: #f0f8ff; /* Light blue background for the rows */
+            background: #f7f7f7;
             color: #333;
+            font-weight: 500;
         }
 
         .comparison-table tr:nth-child(even) td {
-            background-color: #b0e0e6; /* Slightly darker blue for alternating rows */
+            background: #e0f7fa;
         }
 
         .comparison-table tr:hover td {
-            background-color: #e0ffff; /* Soft light blue on hover */
+            background: #b0e0e6;
+            cursor: pointer;
         }
 
         .footer {
             text-align: center;
-            font-size: 1em;
+            padding: 20px;
             color: #fff;
             margin-top: 50px;
-            padding: 20px 0;
-            border-top: 1px solid #1e90ff;
-            background-color: #333;
+            font-size: 1em;
+            background: #333;
+            border-top: 1px solid #00bfff;
         }
 
         .footer p {
@@ -122,8 +132,13 @@
 
         .footer a {
             color: #00bfff;
-            text-decoration: none;
             font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #fff;
         }
 
         /* Responsive Design */
@@ -140,6 +155,10 @@
             select {
                 width: 90%;
                 margin: 10px 0;
+            }
+
+            h1 {
+                font-size: 2.5em;
             }
         }
     </style>
@@ -234,7 +253,7 @@
         </table>
 
         <div class="footer">
-            <p>iPhone Comparison Tool | <a href="#">Made with ❤️</a></p>
+            <p>iPhone Comparison Tool | <a href="#">Made with perfection </a></p>
         </div>
     </div>
 
@@ -248,27 +267,6 @@
                 battery: "Up to 19 hours",
                 storage: "128GB, 256GB, 512GB"
             },
-            iphone13_plus: {
-                display: "6.7-inch OLED",
-                processor: "A15 Bionic",
-                camera: "12 MP Dual Camera",
-                battery: "Up to 22 hours",
-                storage: "128GB, 256GB, 512GB"
-            },
-            iphone13_pro: {
-                display: "6.1-inch Super Retina XDR",
-                processor: "A15 Bionic",
-                camera: "12 MP Triple Camera + LiDAR",
-                battery: "Up to 22 hours",
-                storage: "128GB, 256GB, 512GB, 1TB"
-            },
-            iphone13_pro_max: {
-                display: "6.7-inch Super Retina XDR",
-                processor: "A15 Bionic",
-                camera: "12 MP Triple Camera + LiDAR",
-                battery: "Up to 28 hours",
-                storage: "128GB, 256GB, 512GB, 1TB"
-            },
             iphone14: {
                 display: "6.1-inch OLED",
                 processor: "A16 Bionic",
@@ -276,53 +274,11 @@
                 battery: "Up to 20 hours",
                 storage: "128GB, 256GB, 512GB, 1TB"
             },
-            iphone14_plus: {
-                display: "6.7-inch OLED",
-                processor: "A16 Bionic",
-                camera: "12 MP Dual Camera + 48 MP Main",
-                battery: "Up to 26 hours",
-                storage: "128GB, 256GB, 512GB"
-            },
-            iphone14_pro: {
-                display: "6.1-inch Super Retina XDR",
-                processor: "A16 Bionic",
-                camera: "12 MP Triple Camera + 48 MP Main + LiDAR",
-                battery: "Up to 23 hours",
-                storage: "128GB, 256GB, 512GB, 1TB"
-            },
-            iphone14_pro_max: {
-                display: "6.7-inch Super Retina XDR",
-                processor: "A16 Bionic",
-                camera: "12 MP Triple Camera + 48 MP Main + LiDAR",
-                battery: "Up to 29 hours",
-                storage: "128GB, 256GB, 512GB, 1TB"
-            },
             iphone15: {
                 display: "6.1-inch OLED",
-                processor: "A17 Pro",
-                camera: "12 MP Triple Camera + 48 MP Main",
-                battery: "Up to 20 hours",
-                storage: "128GB, 256GB, 512GB, 1TB"
-            },
-            iphone15_plus: {
-                display: "6.7-inch OLED",
-                processor: "A17 Pro",
-                camera: "12 MP Triple Camera + 48 MP Main",
-                battery: "Up to 26 hours",
-                storage: "128GB, 256GB, 512GB, 1TB"
-            },
-            iphone15_pro: {
-                display: "6.1-inch Super Retina XDR",
-                processor: "A17 Pro",
-                camera: "12 MP Triple Camera + 48 MP Main + LiDAR",
+                processor: "A17 Bionic",
+                camera: "12 MP Dual Camera + 48 MP Main",
                 battery: "Up to 22 hours",
-                storage: "128GB, 256GB, 512GB, 1TB"
-            },
-            iphone15_pro_max: {
-                display: "6.7-inch Super Retina XDR",
-                processor: "A17 Pro",
-                camera: "12 MP Triple Camera + 48 MP Main + LiDAR",
-                battery: "Up to 28 hours",
                 storage: "128GB, 256GB, 512GB, 1TB"
             },
             iphone16: {
@@ -331,27 +287,6 @@
                 camera: "12 MP Dual Camera",
                 battery: "Up to 22 hours",
                 storage: "128GB, 256GB, 512GB"
-            },
-            iphone16_plus: {
-                display: "6.7-inch OLED",
-                processor: "A18 Bionic",
-                camera: "12 MP Dual Camera",
-                battery: "Up to 28 hours",
-                storage: "128GB, 256GB, 512GB"
-            },
-            iphone16_pro: {
-                display: "6.1-inch Super Retina XDR",
-                processor: "A18 Bionic",
-                camera: "12 MP Quad Camera + 50 MP Main + LiDAR",
-                battery: "Up to 26 hours",
-                storage: "128GB, 256GB, 512GB, 1TB"
-            },
-            iphone16_pro_max: {
-                display: "6.8-inch Super Retina XDR",
-                processor: "A18 Bionic",
-                camera: "12 MP Quad Camera + 50 MP Main + LiDAR",
-                battery: "Up to 32 hours",
-                storage: "128GB, 256GB, 512GB, 1TB"
             }
         };
 
