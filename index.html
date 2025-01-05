@@ -3,279 +3,384 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>iPhone Comparison</title>
+    <title>iPhone Model Comparison</title>
     <style>
-        /* General Reset */
-        * {
+        /* General styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(45deg, #00bfff, #87cefa); /* Sky blue gradient background */
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(45deg, #f8f9fa, #e2e8f0);
             color: #333;
-            line-height: 1.6;
-            padding: 20px 0;
         }
 
-        header {
-            background-color: #ff6347;
-            color: white;
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
             text-align: center;
-            padding: 40px 20px;
-            border-radius: 10px;
+            font-size: 3em;
             margin-bottom: 40px;
-        }
-
-        header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
+            color: #1e90ff; /* Sky blue for the heading */
+            text-transform: uppercase;
             letter-spacing: 2px;
         }
 
-        header p {
-            font-size: 1.2rem;
-            font-weight: 300;
-        }
-
-        /* Model Selection Section */
-        .model-selection {
+        .dropdown {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
+            justify-content: space-between;
             margin-bottom: 30px;
+            gap: 20px;
         }
 
-        .btn {
-            background-color: #ff6347;
-            color: white;
-            padding: 15px 30px;
-            font-size: 1.2rem;
+        label {
+            font-size: 1.2em;
+            color: #fff;
             font-weight: 600;
-            border: none;
-            cursor: pointer;
-            border-radius: 30px;
+        }
+
+        select {
+            padding: 12px;
+            font-size: 1.1em;
+            border-radius: 20px;
+            border: 2px solid #00bfff; /* Sky blue border */
+            outline: none;
+            background-color: #e0f7fa;
+            width: 45%;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
         }
 
-        .btn:hover {
-            background-color: #ff4500;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        select:hover,
+        select:focus {
+            border-color: #1e90ff;
+            background-color: #b0e0e6;
         }
 
-        /* Comparison Section */
-        .comparison {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
             margin-top: 30px;
         }
 
-        .iphone-model {
-            display: none;
-            background-color: white;
+        .comparison-table th,
+        .comparison-table td {
             padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 280px;
             text-align: center;
-            transition: transform 0.3s ease, opacity 0.3s ease;
+            border: 2px solid #00bfff; /* Sky blue border */
+            font-size: 1.1em;
+            font-weight: 500;
+            border-radius: 15px;
         }
 
-        .iphone-model h2 {
-            font-size: 2rem;
-            margin-bottom: 15px;
+        .comparison-table th {
+            background-color: #1e90ff; /* Sky blue header */
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .comparison-table td {
+            background-color: #f0f8ff; /* Light blue background for the rows */
             color: #333;
         }
 
-        .iphone-model img {
-            width: 100%;
-            height: auto;
-            border-radius: 15px;
-            margin-bottom: 15px;
-            transition: transform 0.3s ease;
+        .comparison-table tr:nth-child(even) td {
+            background-color: #b0e0e6; /* Slightly darker blue for alternating rows */
         }
 
-        .iphone-model img:hover {
-            transform: scale(1.05);
+        .comparison-table tr:hover td {
+            background-color: #e0ffff; /* Soft light blue on hover */
         }
 
-        .iphone-model ul {
-            list-style-type: none;
-            margin-top: 20px;
-            padding-left: 0;
-            font-size: 1.1rem;
-        }
-
-        .iphone-model li {
-            margin-bottom: 10px;
-            color: #555;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #ff6347;
-            color: white;
+        .footer {
             text-align: center;
-            padding: 15px 0;
+            font-size: 1em;
+            color: #fff;
             margin-top: 50px;
-            border-radius: 15px;
+            padding: 20px 0;
+            border-top: 1px solid #1e90ff;
+            background-color: #333;
         }
 
-        footer p {
-            margin-bottom: 10px;
+        .footer p {
+            margin: 10px 0;
         }
 
-        footer a {
-            color: white;
+        .footer a {
+            color: #00bfff;
             text-decoration: none;
             font-weight: bold;
         }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
-
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .model-selection {
-                flex-direction: column;
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 20px;
             }
 
-            .comparison {
+            .dropdown {
                 flex-direction: column;
                 align-items: center;
+            }
+
+            select {
+                width: 90%;
+                margin: 10px 0;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <h1>Compare iPhones</h1>
-            <p>Choose your iPhone models and compare specifications!</p>
+    <div class="container">
+        <h1>iPhone Model Comparison</h1>
+
+        <!-- Dropdown to select models -->
+        <div class="dropdown">
+            <div>
+                <label for="model1">Select iPhone 1:</label>
+                <select id="model1" onchange="updateComparison()">
+                    <option value="iphone13">iPhone 13</option>
+                    <option value="iphone13_plus">iPhone 13 Plus</option>
+                    <option value="iphone13_pro">iPhone 13 Pro</option>
+                    <option value="iphone13_pro_max">iPhone 13 Pro Max</option>
+                    <option value="iphone14">iPhone 14</option>
+                    <option value="iphone14_plus">iPhone 14 Plus</option>
+                    <option value="iphone14_pro">iPhone 14 Pro</option>
+                    <option value="iphone14_pro_max">iPhone 14 Pro Max</option>
+                    <option value="iphone15">iPhone 15</option>
+                    <option value="iphone15_plus">iPhone 15 Plus</option>
+                    <option value="iphone15_pro">iPhone 15 Pro</option>
+                    <option value="iphone15_pro_max">iPhone 15 Pro Max</option>
+                    <option value="iphone16">iPhone 16</option>
+                    <option value="iphone16_plus">iPhone 16 Plus</option>
+                    <option value="iphone16_pro">iPhone 16 Pro</option>
+                    <option value="iphone16_pro_max">iPhone 16 Pro Max</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="model2">Select iPhone 2:</label>
+                <select id="model2" onchange="updateComparison()">
+                    <option value="iphone13">iPhone 13</option>
+                    <option value="iphone13_plus">iPhone 13 Plus</option>
+                    <option value="iphone13_pro">iPhone 13 Pro</option>
+                    <option value="iphone13_pro_max">iPhone 13 Pro Max</option>
+                    <option value="iphone14">iPhone 14</option>
+                    <option value="iphone14_plus">iPhone 14 Plus</option>
+                    <option value="iphone14_pro">iPhone 14 Pro</option>
+                    <option value="iphone14_pro_max">iPhone 14 Pro Max</option>
+                    <option value="iphone15">iPhone 15</option>
+                    <option value="iphone15_plus">iPhone 15 Plus</option>
+                    <option value="iphone15_pro">iPhone 15 Pro</option>
+                    <option value="iphone15_pro_max">iPhone 15 Pro Max</option>
+                    <option value="iphone16">iPhone 16</option>
+                    <option value="iphone16_plus">iPhone 16 Plus</option>
+                    <option value="iphone16_pro">iPhone 16 Pro</option>
+                    <option value="iphone16_pro_max">iPhone 16 Pro Max</option>
+                </select>
+            </div>
         </div>
-    </header>
 
-    <main>
-        <section class="model-selection">
-            <!-- Buttons for all iPhone Models -->
-            <button class="btn" id="iphone13-btn">iPhone 13</button>
-            <button class="btn" id="iphone13plus-btn">iPhone 13 Plus</button>
-            <button class="btn" id="iphone13pro-btn">iPhone 13 Pro</button>
-            <button class="btn" id="iphone13promax-btn">iPhone 13 Pro Max</button>
+        <!-- Comparison Table -->
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th id="model1_name">iPhone 13</th>
+                    <th id="model2_name">iPhone 13</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Display</td>
+                    <td id="display_iphone13">6.1-inch OLED</td>
+                    <td id="display_iphone14">6.1-inch OLED</td>
+                </tr>
+                <tr>
+                    <td>Processor</td>
+                    <td id="processor_iphone13">A15 Bionic</td>
+                    <td id="processor_iphone14">A16 Bionic</td>
+                </tr>
+                <tr>
+                    <td>Camera</td>
+                    <td id="camera_iphone13">12 MP Dual Camera</td>
+                    <td id="camera_iphone14">12 MP Dual Camera + 48 MP Main</td>
+                </tr>
+                <tr>
+                    <td>Battery Life</td>
+                    <td id="battery_iphone13">Up to 19 hours</td>
+                    <td id="battery_iphone14">Up to 20 hours</td>
+                </tr>
+                <tr>
+                    <td>Storage Options</td>
+                    <td id="storage_iphone13">128GB, 256GB, 512GB</td>
+                    <td id="storage_iphone14">128GB, 256GB, 512GB, 1TB</td>
+                </tr>
+            </tbody>
+        </table>
 
-            <button class="btn" id="iphone14-btn">iPhone 14</button>
-            <button class="btn" id="iphone14plus-btn">iPhone 14 Plus</button>
-            <button class="btn" id="iphone14pro-btn">iPhone 14 Pro</button>
-            <button class="btn" id="iphone14promax-btn">iPhone 14 Pro Max</button>
-
-            <button class="btn" id="iphone15-btn">iPhone 15</button>
-            <button class="btn" id="iphone15plus-btn">iPhone 15 Plus</button>
-            <button class="btn" id="iphone15pro-btn">iPhone 15 Pro</button>
-            <button class="btn" id="iphone15promax-btn">iPhone 15 Pro Max</button>
-        </section>
-
-        <section class="comparison">
-            <!-- iPhone 13 Models -->
-            <div id="iphone13" class="iphone-model">
-                <h2>iPhone 13</h2>
-                <img src="https://via.placeholder.com/280x450.png?text=iPhone+13" alt="iPhone 13">
-                <ul>
-                    <li>Display: 6.1-inch</li>
-                    <li>Chip: A15 Bionic</li>
-                    <li>Camera: Dual 12 MP</li>
-                    <li>Battery Life: 19 hours</li>
-                    <li>Storage Options: 128GB, 256GB, 512GB</li>
-                </ul>
-            </div>
-
-            <!-- iPhone 13 Plus -->
-            <div id="iphone13plus" class="iphone-model">
-                <h2>iPhone 13 Plus</h2>
-                <img src="https://via.placeholder.com/280x450.png?text=iPhone+13+Plus" alt="iPhone 13 Plus">
-                <ul>
-                    <li>Display: 6.7-inch</li>
-                    <li>Chip: A15 Bionic</li>
-                    <li>Camera: Dual 12 MP</li>
-                    <li>Battery Life: 22 hours</li>
-                    <li>Storage Options: 128GB, 256GB, 512GB</li>
-                </ul>
-            </div>
-
-            <!-- iPhone 13 Pro -->
-            <div id="iphone13pro" class="iphone-model">
-                <h2>iPhone 13 Pro</h2>
-                <img src="https://via.placeholder.com/280x450.png?text=iPhone+13+Pro" alt="iPhone 13 Pro">
-                <ul>
-                    <li>Display: 6.1-inch Super Retina XDR</li>
-                    <li>Chip: A15 Bionic</li>
-                    <li>Camera: Triple 12 MP</li>
-                    <li>Battery Life: 22 hours</li>
-                    <li>Storage Options: 128GB, 256GB, 512GB, 1TB</li>
-                </ul>
-            </div>
-
-            <!-- iPhone 13 Pro Max -->
-            <div id="iphone13promax" class="iphone-model">
-                <h2>iPhone 13 Pro Max</h2>
-                <img src="https://via.placeholder.com/280x450.png?text=iPhone+13+Pro+Max" alt="iPhone 13 Pro Max">
-                <ul>
-                    <li>Display: 6.7-inch Super Retina XDR</li>
-                    <li>Chip: A15 Bionic</li>
-                    <li>Camera: Triple 12 MP</li>
-                    <li>Battery Life: 28 hours</li>
-                    <li>Storage Options: 128GB, 256GB, 512GB, 1TB</li>
-                </ul>
-            </div>
-
-            <!-- More models can be added similarly -->
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 iPhone Comparison</p>
-        <a href="https://www.apple.com" target="_blank">Visit Apple Official Site</a>
-    </footer>
+        <div class="footer">
+            <p>iPhone Comparison Tool | <a href="#">Made with ❤️</a></p>
+        </div>
+    </div>
 
     <script>
-        // Function to hide all models
-        function hideAllModels() {
-            const models = document.querySelectorAll('.iphone-model');
-            models.forEach(model => {
-                model.style.display = 'none';
-            });
+        // Object holding iPhone model details
+        const iphoneDetails = {
+            iphone13: {
+                display: "6.1-inch OLED",
+                processor: "A15 Bionic",
+                camera: "12 MP Dual Camera",
+                battery: "Up to 19 hours",
+                storage: "128GB, 256GB, 512GB"
+            },
+            iphone13_plus: {
+                display: "6.7-inch OLED",
+                processor: "A15 Bionic",
+                camera: "12 MP Dual Camera",
+                battery: "Up to 22 hours",
+                storage: "128GB, 256GB, 512GB"
+            },
+            iphone13_pro: {
+                display: "6.1-inch Super Retina XDR",
+                processor: "A15 Bionic",
+                camera: "12 MP Triple Camera + LiDAR",
+                battery: "Up to 22 hours",
+                storage: "128GB, 256GB, 512GB, 1TB"
+            },
+            iphone13_pro_max: {
+                display: "6.7-inch Super Retina XDR",
+                processor: "A15 Bionic",
+                camera: "12 MP Triple Camera + LiDAR",
+                battery: "Up to 28 hours",
+                storage: "128GB, 256GB, 512GB, 1TB"
+            },
+            iphone14: {
+                display: "6.1-inch OLED",
+                processor: "A16 Bionic",
+                camera: "12 MP Dual Camera + 48 MP Main",
+                battery: "Up to 20 hours",
+                storage: "128GB, 256GB, 512GB, 1TB"
+            },
+            iphone14_plus: {
+                display: "6.7-inch OLED",
+                processor: "A16 Bionic",
+                camera: "12 MP Dual Camera + 48 MP Main",
+                battery: "Up to 26 hours",
+                storage: "128GB, 256GB, 512GB"
+            },
+            iphone14_pro: {
+                display: "6.1-inch Super Retina XDR",
+                processor: "A16 Bionic",
+                camera: "12 MP Triple Camera + 48 MP Main + LiDAR",
+                battery: "Up to 23 hours",
+                storage: "128GB, 256GB, 512GB, 1TB"
+            },
+            iphone14_pro_max: {
+                display: "6.7-inch Super Retina XDR",
+                processor: "A16 Bionic",
+                camera: "12 MP Triple Camera + 48 MP Main + LiDAR",
+                battery: "Up to 29 hours",
+                storage: "128GB, 256GB, 512GB, 1TB"
+            },
+            iphone15: {
+                display: "6.1-inch OLED",
+                processor: "A17 Pro",
+                camera: "12 MP Triple Camera + 48 MP Main",
+                battery: "Up to 20 hours",
+                storage: "128GB, 256GB, 512GB, 1TB"
+            },
+            iphone15_plus: {
+                display: "6.7-inch OLED",
+                processor: "A17 Pro",
+                camera: "12 MP Triple Camera + 48 MP Main",
+                battery: "Up to 26 hours",
+                storage: "128GB, 256GB, 512GB, 1TB"
+            },
+            iphone15_pro: {
+                display: "6.1-inch Super Retina XDR",
+                processor: "A17 Pro",
+                camera: "12 MP Triple Camera + 48 MP Main + LiDAR",
+                battery: "Up to 22 hours",
+                storage: "128GB, 256GB, 512GB, 1TB"
+            },
+            iphone15_pro_max: {
+                display: "6.7-inch Super Retina XDR",
+                processor: "A17 Pro",
+                camera: "12 MP Triple Camera + 48 MP Main + LiDAR",
+                battery: "Up to 28 hours",
+                storage: "128GB, 256GB, 512GB, 1TB"
+            },
+            iphone16: {
+                display: "6.1-inch OLED",
+                processor: "A18 Bionic",
+                camera: "12 MP Dual Camera",
+                battery: "Up to 22 hours",
+                storage: "128GB, 256GB, 512GB"
+            },
+            iphone16_plus: {
+                display: "6.7-inch OLED",
+                processor: "A18 Bionic",
+                camera: "12 MP Dual Camera",
+                battery: "Up to 28 hours",
+                storage: "128GB, 256GB, 512GB"
+            },
+            iphone16_pro: {
+                display: "6.1-inch Super Retina XDR",
+                processor: "A18 Bionic",
+                camera: "12 MP Quad Camera + 50 MP Main + LiDAR",
+                battery: "Up to 26 hours",
+                storage: "128GB, 256GB, 512GB, 1TB"
+            },
+            iphone16_pro_max: {
+                display: "6.8-inch Super Retina XDR",
+                processor: "A18 Bionic",
+                camera: "12 MP Quad Camera + 50 MP Main + LiDAR",
+                battery: "Up to 32 hours",
+                storage: "128GB, 256GB, 512GB, 1TB"
+            }
+        };
+
+        // Update the comparison details based on selected models
+        function updateComparison() {
+            const model1 = document.getElementById("model1").value;
+            const model2 = document.getElementById("model2").value;
+
+            // Update model names
+            document.getElementById("model1_name").textContent = model1.replace('_', ' ').toUpperCase();
+            document.getElementById("model2_name").textContent = model2.replace('_', ' ').toUpperCase();
+
+            // Update comparison details for Model 1
+            document.getElementById("display_iphone13").textContent = iphoneDetails[model1].display;
+            document.getElementById("processor_iphone13").textContent = iphoneDetails[model1].processor;
+            document.getElementById("camera_iphone13").textContent = iphoneDetails[model1].camera;
+            document.getElementById("battery_iphone13").textContent = iphoneDetails[model1].battery;
+            document.getElementById("storage_iphone13").textContent = iphoneDetails[model1].storage;
+
+            // Update comparison details for Model 2
+            document.getElementById("display_iphone14").textContent = iphoneDetails[model2].display;
+            document.getElementById("processor_iphone14").textContent = iphoneDetails[model2].processor;
+            document.getElementById("camera_iphone14").textContent = iphoneDetails[model2].camera;
+            document.getElementById("battery_iphone14").textContent = iphoneDetails[model2].battery;
+            document.getElementById("storage_iphone14").textContent = iphoneDetails[model2].storage;
         }
 
-        // Event listeners for buttons
-        document.getElementById('iphone13-btn').addEventListener('click', function() {
-            hideAllModels();
-            document.getElementById('iphone13').style.display = 'block';
-        });
-
-        document.getElementById('iphone13plus-btn').addEventListener('click', function() {
-            hideAllModels();
-            document.getElementById('iphone13plus').style.display = 'block';
-        });
-
-        document.getElementById('iphone13pro-btn').addEventListener('click', function() {
-            hideAllModels();
-            document.getElementById('iphone13pro').style.display = 'block';
-        });
-
-        document.getElementById('iphone13promax-btn').addEventListener('click', function() {
-            hideAllModels();
-            document.getElementById('iphone13promax').style.display = 'block';
-        });
-
-        // You can add more event listeners for other models similarly...
+        // Initial comparison update
+        updateComparison();
     </script>
 </body>
 </html>
