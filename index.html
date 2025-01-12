@@ -5,115 +5,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iPhone Model Comparison</title>
     <style>
-        /* General Reset and Global Styles */
+        /* Global Styles */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #6a82fb, #fc5c7d); /* Stunning gradient background */
+            background: linear-gradient(135deg, #56ccf2, #2f80ed);
             color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-attachment: fixed;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease;
         }
 
-        /* Container for the main content */
         .container {
             background: #fff;
-            border-radius: 15px;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
-            max-width: 950px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
             width: 100%;
-            padding: 30px;
+            padding: 40px;
             text-align: center;
-            transform: scale(1);
-            transition: transform 0.3s ease-in-out;
+            transition: all 0.3s ease;
+            z-index: 2;
         }
 
-        .container:hover {
-            transform: scale(1.02);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-        }
-
-        /* Title Styling */
         h1 {
-            font-size: 3.5em;
+            font-size: 3.2em;
             font-weight: bold;
             color: #fff;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
             letter-spacing: 1px;
             text-transform: uppercase;
+            cursor: pointer;
         }
 
-        /* Dropdown styling */
         .dropdown {
-            margin: 30px 0;
+            margin: 20px 0;
             display: flex;
-            justify-content: space-between;
-            gap: 20px;
+            justify-content: space-around;
+            gap: 30px;
+            flex-wrap: wrap;
         }
 
         label {
             font-size: 1.2em;
             color: #fff;
             font-weight: 600;
+            margin-bottom: 10px;
         }
 
         select {
             padding: 15px 20px;
             font-size: 1.1em;
-            border-radius: 25px;
+            border-radius: 30px;
             border: none;
             background: #f0f8ff;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             width: 48%;
+            margin-top: 10px;
         }
 
         select:hover {
             background: #e0f7fa;
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
         }
 
-        /* Table Styling */
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
+        .comparison-cards {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
             margin-top: 30px;
-            font-size: 1.1em;
         }
 
-        .comparison-table th,
-        .comparison-table td {
+        .card {
+            background: #f9f9f9;
             padding: 20px;
-            border-radius: 15px;
-            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            transition: all 0.3s ease;
         }
 
-        .comparison-table th {
-            background: linear-gradient(135deg, #00bfff, #1e90ff);
-            color: #fff;
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            font-size: 1.5em;
+            color: #2f80ed;
+            margin-bottom: 20px;
+        }
+
+        .card .feature {
+            font-size: 1.1em;
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .card .feature span {
             font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .comparison-table td {
-            background: #f7f7f7;
             color: #333;
-            font-weight: 500;
-        }
-
-        .comparison-table tr:nth-child(even) td {
-            background: #e0f7fa;
-        }
-
-        .comparison-table tr:hover td {
-            background: #b0e0e6;
-            cursor: pointer;
         }
 
         .footer {
@@ -121,9 +120,8 @@
             padding: 20px;
             color: #fff;
             margin-top: 50px;
-            font-size: 1em;
             background: #333;
-            border-top: 1px solid #00bfff;
+            border-top: 2px solid #2f80ed;
         }
 
         .footer p {
@@ -131,7 +129,7 @@
         }
 
         .footer a {
-            color: #00bfff;
+            color: #2f80ed;
             font-weight: bold;
             text-decoration: none;
             transition: color 0.3s;
@@ -139,6 +137,72 @@
 
         .footer a:hover {
             color: #fff;
+        }
+
+        /* Frenzy Effect */
+        .frenzy {
+            animation: frenzyEffect 0.5s ease-in-out infinite;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: linear-gradient(135deg, #ff6347, #ff8c00);
+        }
+
+        @keyframes frenzyEffect {
+            0% {
+                transform: rotate(0deg) scale(1);
+                background-color: #ff6347;
+            }
+            25% {
+                transform: rotate(15deg) scale(1.2);
+                background-color: #ff8c00;
+            }
+            50% {
+                transform: rotate(-15deg) scale(1.3);
+                background-color: #ff6347;
+            }
+            75% {
+                transform: rotate(30deg) scale(1.2);
+                background-color: #ffa07a;
+            }
+            100% {
+                transform: rotate(0deg) scale(1);
+                background-color: #ff6347;
+            }
+        }
+
+        /* Confetti Effect */
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 999;
+        }
+
+        .confetti div {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff6347;
+            animation: confettiFall 0.5s forwards;
+            opacity: 1;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100%) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(720deg);
+            }
         }
 
         /* Responsive Design */
@@ -160,19 +224,29 @@
             h1 {
                 font-size: 2.5em;
             }
+
+            .comparison-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 80%;
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>iPhone Model Comparison</h1>
+        <h1 id="frenzy-trigger">iPhone Model Comparison</h1>
 
         <div class="dropdown">
             <div>
                 <label for="model1">Select iPhone 1:</label>
                 <select id="model1" onchange="updateComparison()">
                     <option value="iphone13">iPhone 13</option>
-                    <option value="iphone13plus">iPhone 13 Plus</option>
+                    <option value="iphone13mini">iPhone 13 Mini</option>
                     <option value="iphone13pro">iPhone 13 Pro</option>
                     <option value="iphone13promax">iPhone 13 Pro Max</option>
                     <option value="iphone14">iPhone 14</option>
@@ -184,7 +258,6 @@
                     <option value="iphone15pro">iPhone 15 Pro</option>
                     <option value="iphone15promax">iPhone 15 Pro Max</option>
                     <option value="iphone16">iPhone 16</option>
-                    <option value="iphone16plus">iPhone 16 Plus</option>
                     <option value="iphone16pro">iPhone 16 Pro</option>
                     <option value="iphone16promax">iPhone 16 Pro Max</option>
                 </select>
@@ -193,7 +266,7 @@
                 <label for="model2">Select iPhone 2:</label>
                 <select id="model2" onchange="updateComparison()">
                     <option value="iphone13">iPhone 13</option>
-                    <option value="iphone13plus">iPhone 13 Plus</option>
+                    <option value="iphone13mini">iPhone 13 Mini</option>
                     <option value="iphone13pro">iPhone 13 Pro</option>
                     <option value="iphone13promax">iPhone 13 Pro Max</option>
                     <option value="iphone14">iPhone 14</option>
@@ -205,49 +278,31 @@
                     <option value="iphone15pro">iPhone 15 Pro</option>
                     <option value="iphone15promax">iPhone 15 Pro Max</option>
                     <option value="iphone16">iPhone 16</option>
-                    <option value="iphone16plus">iPhone 16 Plus</option>
                     <option value="iphone16pro">iPhone 16 Pro</option>
                     <option value="iphone16promax">iPhone 16 Pro Max</option>
                 </select>
             </div>
         </div>
 
-        <table class="comparison-table">
-            <thead>
-                <tr>
-                    <th>Feature</th>
-                    <th id="model1_name">iPhone 13</th>
-                    <th id="model2_name">iPhone 13</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Display</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Processor</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Camera</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Battery Life</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Storage Options</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="comparison-cards">
+            <div class="card">
+                <h3>iPhone 1</h3>
+                <div class="feature">Display: <span></span></div>
+                <div class="feature">Processor: <span></span></div>
+                <div class="feature">Camera: <span></span></div>
+                <div class="feature">Battery Life: <span></span></div>
+                <div class="feature">Storage Options: <span></span></div>
+            </div>
+
+            <div class="card">
+                <h3>iPhone 2</h3>
+                <div class="feature">Display: <span></span></div>
+                <div class="feature">Processor: <span></span></div>
+                <div class="feature">Camera: <span></span></div>
+                <div class="feature">Battery Life: <span></span></div>
+                <div class="feature">Storage Options: <span></span></div>
+            </div>
+        </div>
 
         <div class="footer">
             <p>iPhone Comparison Tool | <a href="#">Made with perfection</a></p>
@@ -263,11 +318,11 @@
                 battery: "Up to 19 hours",
                 storage: "128GB, 256GB, 512GB"
             },
-            iphone13plus: {
-                display: "6.7-inch OLED",
+            iphone13mini: {
+                display: "5.4-inch OLED",
                 processor: "A15 Bionic",
                 camera: "12 MP Dual Camera",
-                battery: "Up to 20 hours",
+                battery: "Up to 17 hours",
                 storage: "128GB, 256GB, 512GB"
             },
             iphone13pro: {
@@ -286,105 +341,141 @@
             },
             iphone14: {
                 display: "6.1-inch OLED",
-                processor: "A16 Bionic",
-                camera: "48 MP Dual Camera",
+                processor: "A15 Bionic",
+                camera: "12 MP Dual Camera",
                 battery: "Up to 20 hours",
-                storage: "128GB, 256GB, 512GB, 1TB"
+                storage: "128GB, 256GB, 512GB"
             },
             iphone14plus: {
                 display: "6.7-inch OLED",
-                processor: "A16 Bionic",
-                camera: "48 MP Dual Camera",
-                battery: "Up to 22 hours",
-                storage: "128GB, 256GB, 512GB, 1TB"
+                processor: "A15 Bionic",
+                camera: "12 MP Dual Camera",
+                battery: "Up to 26 hours",
+                storage: "128GB, 256GB, 512GB"
             },
             iphone14pro: {
                 display: "6.1-inch OLED",
-                processor: "A16 Bionic Pro",
+                processor: "A16 Bionic",
                 camera: "48 MP Triple Camera",
                 battery: "Up to 23 hours",
-                storage: "256GB, 512GB, 1TB"
+                storage: "128GB, 256GB, 512GB, 1TB"
             },
             iphone14promax: {
                 display: "6.7-inch OLED",
-                processor: "A16 Bionic Pro",
+                processor: "A16 Bionic",
                 camera: "48 MP Triple Camera",
-                battery: "Up to 26 hours",
-                storage: "256GB, 512GB, 1TB"
+                battery: "Up to 29 hours",
+                storage: "128GB, 256GB, 512GB, 1TB"
             },
             iphone15: {
                 display: "6.1-inch OLED",
                 processor: "A17 Bionic",
-                camera: "50 MP Dual Camera",
-                battery: "Up to 24 hours",
+                camera: "48 MP Dual Camera",
+                battery: "Up to 26 hours",
                 storage: "128GB, 256GB, 512GB"
             },
             iphone15plus: {
                 display: "6.7-inch OLED",
                 processor: "A17 Bionic",
-                camera: "50 MP Dual Camera",
-                battery: "Up to 26 hours",
+                camera: "48 MP Dual Camera",
+                battery: "Up to 29 hours",
                 storage: "128GB, 256GB, 512GB"
             },
             iphone15pro: {
                 display: "6.1-inch OLED",
                 processor: "A17 Bionic Pro",
-                camera: "50 MP Triple Camera",
+                camera: "48 MP Triple Camera",
                 battery: "Up to 28 hours",
-                storage: "256GB, 512GB, 1TB"
+                storage: "128GB, 256GB, 512GB, 1TB"
             },
             iphone15promax: {
                 display: "6.7-inch OLED",
                 processor: "A17 Bionic Pro",
-                camera: "50 MP Triple Camera",
-                battery: "Up to 30 hours",
-                storage: "256GB, 512GB, 1TB"
+                camera: "48 MP Triple Camera",
+                battery: "Up to 31 hours",
+                storage: "128GB, 256GB, 512GB, 1TB"
             },
             iphone16: {
                 display: "6.1-inch OLED",
                 processor: "A18 Bionic",
-                camera: "64 MP Dual Camera",
-                battery: "Up to 24 hours",
-                storage: "256GB, 512GB, 1TB"
-            },
-            iphone16plus: {
-                display: "6.7-inch OLED",
-                processor: "A18 Bionic",
-                camera: "64 MP Dual Camera",
-                battery: "Up to 26 hours",
-                storage: "256GB, 512GB, 1TB"
+                camera: "48 MP Dual Camera",
+                battery: "Up to 27 hours",
+                storage: "128GB, 256GB, 512GB"
             },
             iphone16pro: {
-                display: "6.3-inch OLED",
+                display: "6.1-inch OLED",
                 processor: "A18 Bionic Pro",
-                camera: "64 MP Triple Camera",
-                battery: "Up to 28 hours",
-                storage: "256GB, 512GB, 1TB"
+                camera: "50 MP Triple Camera",
+                battery: "Up to 30 hours",
+                storage: "128GB, 256GB, 512GB, 1TB"
             },
             iphone16promax: {
-                display: "6.9-inch OLED",
+                display: "6.7-inch OLED",
                 processor: "A18 Bionic Pro",
-                camera: "64 MP Triple Camera",
-                battery: "Up to 30 hours",
-                storage: "256GB, 512GB, 1TB"
+                camera: "50 MP Triple Camera",
+                battery: "Up to 35 hours",
+                storage: "128GB, 256GB, 512GB, 1TB"
             }
         };
 
+        // Update comparison cards
         function updateComparison() {
             const model1 = document.getElementById("model1").value;
             const model2 = document.getElementById("model2").value;
 
-            document.getElementById("model1_name").textContent = model1.replace(/_/g, " ").toUpperCase();
-            document.getElementById("model2_name").textContent = model2.replace(/_/g, " ").toUpperCase();
-
             const features = ["display", "processor", "camera", "battery", "storage"];
-            document.querySelectorAll(".comparison-table tbody tr").forEach((row, index) => {
-                row.cells[1].textContent = iphoneDetails[model1][features[index]];
-                row.cells[2].textContent = iphoneDetails[model2][features[index]];
+            const cards = document.querySelectorAll('.card');
+
+            cards[0].querySelectorAll('.feature span').forEach((span, index) => {
+                span.textContent = iphoneDetails[model1][features[index]];
+            });
+            cards[1].querySelectorAll('.feature span').forEach((span, index) => {
+                span.textContent = iphoneDetails[model2][features[index]];
             });
         }
 
-        updateComparison();
+        // Handle Frenzy Effect
+        let frenzyActive = false;
+
+        document.getElementById('frenzy-trigger').addEventListener('click', function() {
+            if (frenzyActive) {
+                document.body.classList.remove('frenzy');
+                removeConfetti();
+            } else {
+                document.body.classList.add('frenzy');
+                generateConfetti();
+            }
+            frenzyActive = !frenzyActive;
+        });
+
+        // Generate Confetti
+        function generateConfetti() {
+            const confettiContainer = document.createElement('div');
+            confettiContainer.classList.add('confetti');
+            document.body.appendChild(confettiContainer);
+
+            for (let i = 0; i < 200; i++) {
+                const confettiPiece = document.createElement('div');
+                confettiPiece.style.left = `${Math.random() * 100}%`;
+                confettiPiece.style.top = `${Math.random() * 100}%`;
+                confettiPiece.style.animationDelay = `${Math.random() * 2}s`;
+                confettiPiece.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 60%)`;
+                confettiContainer.appendChild(confettiPiece);
+            }
+
+            confettiContainer.style.opacity = '1';
+        }
+
+        // Remove Confetti
+        function removeConfetti() {
+            const confettiContainer = document.querySelector('.confetti');
+            if (confettiContainer) {
+                confettiContainer.style.opacity = '0';
+                setTimeout(() => confettiContainer.remove(), 1000);
+            }
+        }
+
+        updateComparison(); // Initial update
     </script>
 </body>
 </html>
